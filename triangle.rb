@@ -13,8 +13,11 @@
 # and
 #   about_triangle_project_2.rb
 #
+Unique_sides_to_triangle_type = { 1 => :equilateral, 2 => :isosceles, 3 => :scalene }
+
 def triangle(a, b, c)
-  # WRITE THIS CODE
+  unique_sides = [a, b, c].uniq.size
+  return Unique_sides_to_triangle_type[unique_sides]
 end
 
 # Error class used in part 2.  No need to change this code.
