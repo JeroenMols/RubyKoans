@@ -16,10 +16,26 @@
 Unique_sides_to_triangle_type = { 1 => :equilateral, 2 => :isosceles, 3 => :scalene }
 
 def triangle(a, b, c)
+  if !is_valid_triangle(a, b, c)
+    raise TriangleError
+  end
+
   unique_sides = [a, b, c].uniq.size
   return Unique_sides_to_triangle_type[unique_sides]
 end
 
 # Error class used in part 2.  No need to change this code.
 class TriangleError < StandardError
+end
+
+private
+
+def is_valid_triangle(a, b, c)
+  if a <= 0 || b <= 0 || c <= 0
+    return false
+  elsif (a + b <= c || a + c <= b || b + c <= a)
+    return false
+  else
+    return true
+  end
 end
